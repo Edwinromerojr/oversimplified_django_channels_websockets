@@ -44,6 +44,14 @@ INSTALLED_APPS = [
 
 ASGI_APPLICATION = 'channel.asgi.application'
 
+# For production use redis for inmemory connections
+# InMemoryChannelLayer is for testing only and not for production
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    }
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
